@@ -16,7 +16,7 @@ function App() {
   return (
   <div className="h-screen flex items-center justify-center">
     <div className="max-w-3xl w-full px-6 text-center space-y-10">
-      <p className="text-neutral-950 text-7xl font-semibold">Boa noite</p>
+      <p className="text-neutral-950 text-7xl font-semibold">Seja bem-vindo</p>
       <Button onClick={openLoginModal}>
         Iniciar
       </Button>
