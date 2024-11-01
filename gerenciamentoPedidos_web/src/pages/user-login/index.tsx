@@ -27,7 +27,7 @@ export function UserLoginPage() {
         
         <p className="text-neutral-950 text-7xl font-semibold">Seja bem-vindo</p>
 
-        <Button onClick={openLoginModal} className="shadow-shape" colors="amber">
+        <Button onClick={confirUser} className="shadow-shape" colors="amber">
             Iniciar
         </Button>
 

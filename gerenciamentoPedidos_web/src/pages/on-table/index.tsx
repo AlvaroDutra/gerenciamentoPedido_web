@@ -1,5 +1,6 @@
 import { Icon, CircleUser, UserPlus2, UsersRound, SquareMenu, Banknote} from 'lucide-react'
 import { chairsTablePlatter } from '@lucide/lab'
+import ClientsList from '../../components/clientsList'
 
 export function OnTablePage(){
     return(
@@ -11,21 +12,8 @@ export function OnTablePage(){
                 </div>
             </div>
 
-            <div className='grid place-items-center h-screen '>
-                <div className='space-y-3.5'>
-                    <div className='rounded px-4 h-12 bg-neutral-50 shadow-shape flex items-center justify gap-5'>
-                        <CircleUser/>
-                        <span className='font-semibold'>Álvaro</span>
-                    </div>
-                    <div className='rounded px-4 h-12 bg-neutral-50 shadow-shape flex items-center justify gap-5'>
-                        <CircleUser/>
-                        <span className='font-semibold'>fabricio</span>
-                    </div>
-                    <div className='rounded px-4 h-12 bg-neutral-50 shadow-shape flex items-center justify-center gap-5'>
-                        <UserPlus2 className='hover:text-emerald-400'/>
-                    </div>
-                </div>
-            </div>
+            <ClientsList/>
+            
 
             <div className="px-4 h-24 bg-neutral-100 shadow-shape flex justify-between items-center">
                 <div className="flex items-baseline gap-2">
