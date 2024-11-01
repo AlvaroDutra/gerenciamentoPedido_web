@@ -32,7 +32,7 @@ export function UserLoginPage() {
         </Button>
 
         </div>
-        {isLoginModalOpen && (
+        {/* {isLoginModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
             <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-neutral-200 space-y-5">
                 <div className="space-y-2">
@@ -77,7 +77,7 @@ export function UserLoginPage() {
                 </div>
             </div>
         </div>
-        )}
+        )} */}
     </div>
 )}
 
