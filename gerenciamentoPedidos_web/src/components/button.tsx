@@ -2,7 +2,7 @@ import { ComponentProps, ReactNode } from 'react'
 import{tv, VariantProps} from 'tailwind-variants'
 
 const buttonVariants = tv({
-    base: 'rounded-lg shadow-shape px-10 font-semibold text-2xl items-center gap-2 justify-center',
+    base: 'rounded-lg shadow-shape px-5 font-semibold text-2xl items-center gap-2 justify-items-center',
 
     variants:{
         colors: {
