@@ -6,8 +6,8 @@ const buttonVariants = tv({
 
     variants:{
         colors: {
-            rose: 'bg-rose-900 text-rose-50 hover:bg-rose-800',
-            amber: 'bg-amber-400 text-slate-50 hover:bg-amber-300'
+            blue: 'bg-sky-900 text-sky-50 hover:bg-sky-800',
+            rose: 'bg-red-600 text-slate-50 hover:bg-red-800'
         },
         size: {
             default: 'py-3',
