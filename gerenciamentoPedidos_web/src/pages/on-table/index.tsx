@@ -15,6 +15,7 @@ export function OnTablePage() {
       <div className="px-4 h-16 flex">
         <div className="flex items-center gap-4">
           <Icon iconNode={chairsTablePlatter} className="size-10"/>
+          <h1 className="font-semibold text-neutral-950 text-3xl">Mesa</h1>
         </div>
       </div>
 
@@ -24,9 +25,9 @@ export function OnTablePage() {
       <div className="px-4 h-24 bg-neutral-100 shadow-shape flex justify-between items-center">
         <div className="flex items-baseline gap-2">
           <UsersRound className="size-6 text-indigo-600" />
-          <span className="font-semibold text-lg text-indigo-600">
+          <button className="font-semibold text-lg text-indigo-600">
             Clientes
-          </span>
+          </button>
         </div>
 
         <div className="flex items-center gap-2">
@@ -38,9 +39,9 @@ export function OnTablePage() {
 
         <div className="flex items-center gap-2">
           <Banknote className="size-7 text-lime-400" />
-          <span className="font-semibold text-neutral-950 text-lg hover:text-lime-400">
+          <button className="font-semibold text-neutral-950 text-lg hover:text-lime-400">
             Pagamento
-          </span>
+          </button>
         </div>
       </div>
     </div>

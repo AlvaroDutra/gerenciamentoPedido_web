@@ -1,7 +1,14 @@
 import { Banknote, BookOpenText, SquareMenu, UsersRound } from "lucide-react";
 import { ProductList } from "../../components/productList";
+import { useNavigate } from "react-router-dom";
 
 export function OnMenu() {
+  const navigate = useNavigate()
+
+  function BackToTable(){
+    navigate('/table/5')
+  }
+
   return (
     <div className="h-screen flex flex-col justify-between">
       <div className="px-4 h-16 flex">
@@ -17,9 +24,9 @@ export function OnMenu() {
       <div className="px-4 h-24 bg-neutral-100 shadow-shape flex justify-between items-center">
         <div className="flex items-baseline gap-2">
           <UsersRound className="size-6 text-indigo-600" />
-          <span className="font-semibold text-lg text-neutral-950 hover:text-indigo-600">
+          <button onClick={BackToTable} className="font-semibold text-lg text-neutral-950 hover:text-indigo-600">
             Clientes
-          </span>
+          </button>
         </div>
 
         <div className="flex items-center gap-2">
@@ -31,9 +38,9 @@ export function OnMenu() {
 
         <div className="flex items-center gap-2">
           <Banknote className="size-7 text-lime-400" />
-          <span className="font-semibold text-neutral-950 text-lg hover:text-lime-400">
+          <button className="font-semibold text-neutral-950 text-lg hover:text-lime-400">
             Pagamento
-          </span>
+          </button>
         </div>
       </div>
     </div>

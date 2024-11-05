@@ -56,7 +56,7 @@ export default function ClientsList() {
       <div>
         <div className="grid place-items-center">
           <div className="space-y-3.5 ">
-            <ul className="space-y-3.5 overflow-y-auto max-h-72 px-1 py-3">
+            <ul className="space-y-3.5 overflow-y-auto max-h-60 px-1 py-1">
               {data ? (
                 data.map((i) => {
                   return (
