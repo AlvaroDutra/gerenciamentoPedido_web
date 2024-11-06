@@ -3,6 +3,7 @@ import { UserLoginPage } from './pages/user-login'
 import { OnTablePage } from './pages/on-table'
 import ErrorPage from './pages/error-page'
 import { OnMenu } from './pages/menu'
+import { ProductDetailsPage } from './pages/ProductDetails'
 
 
 const router = createBrowserRouter([
@@ -18,8 +19,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/cardapio",
-    element: <OnMenu/>
+    element: <OnMenu/>,
+    errorElement: <ErrorPage/>
   },
+  {
+    path: "/cardapio/:productName",
+    element:<ProductDetailsPage/>,
+    errorElement: <ErrorPage/>
+  }
 
 ])
 

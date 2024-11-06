@@ -37,8 +37,8 @@ export function OnMenu() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Banknote className="size-7 text-lime-400" />
-          <button className="font-semibold text-neutral-950 text-lg hover:text-lime-400">
+          <Banknote className="size-7 text-lime-600" />
+          <button className="font-semibold text-neutral-950 text-lg hover:text-lime-600">
             Pagamento
           </button>
         </div>

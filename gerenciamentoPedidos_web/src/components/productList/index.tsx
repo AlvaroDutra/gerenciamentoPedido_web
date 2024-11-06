@@ -1,19 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { IProduct } from "../../types/product";
 import { CupSoda, Icon } from "lucide-react";
 import { burger } from "@lucide/lab";
-import { useState } from "react";
-import { ProductDetailsModal } from "../modals/productDatailModal";
+import { useNavigate } from "react-router-dom";
 
 export function ProductList() {
-    const [isProductDetailsModalOpen, setIsProductDetailsModalOpen] = useState(false)
-    const [productName, setProductName] = useState('')
-    function OpenProductDetailsModal(name: string){
-        setProductName(name)
-        setIsProductDetailsModalOpen(true)
-    }
-
-
+  const navigate = useNavigate()
+  const queryClient = useQueryClient()
+  
   const { data } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
@@ -23,6 +17,14 @@ export function ProductList() {
     },
     staleTime: 1000 * 60,
   });
+  
+  function OpenProductDetailsPage(productName: string){
+
+    queryClient.invalidateQueries({queryKey: ["product"]})
+
+    navigate(`/cardapio/${productName}`)
+  }
+
 
   return (
     <div className="mx-5">
@@ -32,12 +34,12 @@ export function ProductList() {
             return (
               <li
                 key={i.id}
-                className="rounded px-2 h-12 bg-neutral-50 shadow-shape flex gap-2 items-center w-52 "
+                className="rounded px-2 h-14 bg-neutral-50 shadow-shape flex gap-2 items-center w-52 "
               >
-                {i.category.id == 1 ?<CupSoda/> : <Icon iconNode={burger}/>}
+                {i.category.id == 1 ?<CupSoda className="text-cyan-600"/> : <Icon iconNode={burger} className="text-amber-700"/>}
                 <button
-                  onClick={()=> {OpenProductDetailsModal(i.name)}}
-                  className="font-semibold truncate"
+                  onClick={() => {OpenProductDetailsPage(i.name)}}
+                  className="font-semibold truncate hover:text-stone-500"
                 >
                   {i.name}
                 </button>
@@ -48,12 +50,6 @@ export function ProductList() {
           <></>
         )}
       </ul>
-    <ProductDetailsModal
-        isProductDetailsModalOpen={isProductDetailsModalOpen}
-        setIsProductDetailsModalOpen={setIsProductDetailsModalOpen}
-        productName={productName}
-        />
-
     </div>
   );
 }
