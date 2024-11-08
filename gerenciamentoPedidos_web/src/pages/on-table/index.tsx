@@ -10,6 +10,10 @@ export function OnTablePage() {
         navigate("/cardapio")
     }
 
+    function OpenPaymentPage(){
+      navigate("/pagamento")
+    }
+
   return (
     <div className="h-screen flex flex-col justify-between">
       <div className="px-4 h-16 flex">
@@ -39,7 +43,7 @@ export function OnTablePage() {
 
         <div className="flex items-center gap-2">
           <Banknote className="size-7 text-lime-600" />
-          <button className="font-semibold text-neutral-950 text-lg hover:text-lime-600">
+          <button onClick={OpenPaymentPage} className="font-semibold text-neutral-950 text-lg hover:text-lime-600">
             Pagamento
           </button>
         </div>
