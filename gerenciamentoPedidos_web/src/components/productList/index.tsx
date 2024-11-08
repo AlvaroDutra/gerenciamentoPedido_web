@@ -18,9 +18,9 @@ export function ProductList() {
     staleTime: 1000 * 60,
   });
   
-  function OpenProductDetailsPage(productName: string){
+  async function OpenProductDetailsPage(productName: string){
 
-    queryClient.invalidateQueries({queryKey: ["product"]})
+    await queryClient.invalidateQueries({queryKey: ["product"]})
 
     navigate(`/cardapio/${productName}`)
   }

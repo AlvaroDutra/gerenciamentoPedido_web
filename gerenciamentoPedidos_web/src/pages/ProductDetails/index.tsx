@@ -1,18 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Banknote, CupSoda, Icon, SquareMenu, UsersRound } from "lucide-react";
 import { IProduct } from "../../types/product";
+import { IClient } from "../../types/client";
+import { IOrder } from "../../types/order";
 import { useParams } from "react-router-dom";
 import { burger } from "@lucide/lab";
 import { Button } from "../../components/button";
-import { IClient } from "../../types/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css"
 
 export function ProductDetailsPage() {
   const { productName } = useParams();
-  const [selectValue, setSelectValue] = useState('')
+  const [selectValue, setSelectValue] = useState("");
+  const queryClient = useQueryClient();
 
-
-  
   const clientData = useQuery({
     queryKey: ["client"],
     queryFn: async () => {
@@ -22,8 +24,7 @@ export function ProductDetailsPage() {
     },
     staleTime: 1000 * 60,
   });
-  
-  
+
   const { data } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
@@ -36,12 +37,30 @@ export function ProductDetailsPage() {
     staleTime: 1000 * 60,
   });
 
-  async function handleOrder(){
+  const getOrderRequest = useQuery({
+    queryKey: ["order"],
+    queryFn: async () => {
+      const response = await fetch(
+        `https://localhost:7106/order/${selectValue}`
+      );
+      const orderData: IOrder = await response.json();
+      return orderData;
+    },
+    staleTime: 1000 * 60,
+  });
+
+  async function handleOrder() {
+    console.log(getOrderRequest.data?.id, selectValue, data?.id);
+    if(!getOrderRequest.data?.id || getOrderRequest.data?.id === undefined){
+      console.log("O ALVARO EH GAY")
+      toast.error("O Cliente não foi selecionado")
+    }
     const response = await fetch("https://localhost:7106/Order", {
       method: "POST",
       body: JSON.stringify({
+        id: getOrderRequest.data?.id,
         clientId: selectValue,
-        productId: data?.id
+        productId: data?.id,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -49,12 +68,20 @@ export function ProductDetailsPage() {
     });
   }
 
+  useEffect(() => {
+    if (selectValue) {
+      console.log(selectValue)
+      queryClient.invalidateQueries({ queryKey: ["order"] });
+    }
+  }, [selectValue]);  
+
   return (
+    <>
+    <ToastContainer />
     <div className="h-screen flex flex-col justify-between">
       <div>
         <p>aqui vai ta uma imagem</p>
       </div>
-
       <div className="px-4 h-16 flex">
         <div className="flex items-center gap-4">
           {data?.category.id == 1 ? (
@@ -80,19 +107,30 @@ export function ProductDetailsPage() {
           })}
         </span>
         <div>
-          <Button colors="blue" onClick={() => {handleOrder()}} className="hover:bg-sky-200">
+          <Button
+            colors="blue"
+            onClick={() => {
+              handleOrder();
+            }}
+            className="hover:bg-sky-200"
+          >
             Pedir
           </Button>
-          <select value={selectValue} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            console.log(selectValue)
+          <select
+            value={selectValue}
+            onChange={async(e: React.ChangeEvent<HTMLSelectElement>) => {
               setSelectValue(e.target.value);
-          }} name="select">
+            }}
+            name="select"
+            >
             <option value={""}>Selecione um usuario</option>
-            {clientData.data?.map(
-              (i) => {
-                return <option key={i.id} value={i.id}>{i.name}</option>
-              }
-            )}
+            {clientData.data?.map((i) => {
+              return (
+                <option key={i.id} value={i.id}>
+                  {i.name}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>
@@ -120,5 +158,6 @@ export function ProductDetailsPage() {
         </div>
       </div>
     </div>
+            </>
   );
 }
