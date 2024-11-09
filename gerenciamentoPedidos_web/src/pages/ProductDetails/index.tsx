@@ -3,7 +3,7 @@ import { Banknote, CupSoda, Icon, SquareMenu, UsersRound } from "lucide-react";
 import { IProduct } from "../../types/product";
 import { IClient } from "../../types/client";
 import { IOrder } from "../../types/order";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { burger } from "@lucide/lab";
 import { Button } from "../../components/button";
 import { useEffect, useState } from "react";
@@ -14,6 +14,13 @@ export function ProductDetailsPage() {
   const { productName } = useParams();
   const [selectValue, setSelectValue] = useState("");
   const queryClient = useQueryClient();
+
+  const navigate = useNavigate();
+
+  function BackToMenu() {
+    navigate("/cardapio");
+  }
+
 
   const clientData = useQuery({
     queryKey: ["client"],
@@ -147,21 +154,21 @@ export function ProductDetailsPage() {
         <footer className="px-4 h-24 bg-neutral-100 shadow-shape flex justify-between items-center">
           <div className="flex items-baseline gap-2">
             <UsersRound className="size-6 text-indigo-600" />
-            <button className="font-semibold text-lg text-neutral-950 hover:text-indigo-600">
+            <button className="font-semibold text-lg text-neutral-950">
               Clientes
             </button>
           </div>
 
           <div className="flex items-center gap-2">
             <SquareMenu className="size-7 text-amber-400" />
-            <button className="font-semibold text-lg text-amber-400">
+            <button onClick={BackToMenu} className="font-semibold text-lg text-amber-400">
               Cardápio
             </button>
           </div>
 
           <div className="flex items-center gap-2">
             <Banknote className="size-7 text-lime-600" />
-            <button className="font-semibold text-neutral-950 text-lg hover:text-lime-600">
+            <button className="font-semibold text-neutral-950 text-lg">
               Pagamento
             </button>
           </div>
