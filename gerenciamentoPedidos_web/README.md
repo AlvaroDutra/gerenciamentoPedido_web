@@ -1,50 +1,13 @@
-# React + TypeScript + Vite
+# **Gerenciador de Pedidos**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de gerenciamento de pedidos desenvolvido em **C#** e **React** com fim de praticar o desenvolvimento de sistemas para a matéria de Projeto Extencionista e Integrador da UNIVAG.
 
-Currently, two official plugins are available:
+# **Como usar**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Back-end**
 
-## Expanding the ESLint configuration
+Para rodar o back-end, será necessário clonar esse repositório [**joaoguilherme2909/gerenciamento_pedidos**](https://github.com/JoaoGuilherme2909/gerenciamento_pedidos) em alguma IDE de C# (utilizamos o [Visual Studio](https://visualstudio.microsoft.com/pt-br/)). Será necessário criar um arquivo chamado ".env" na raiz do projeto com as seguintes credenciais: *CONNECTION_STRING="Server=localhost;Database=gerenciamentoPedidos;Trusted_Connection=True;TrustServerCertificate=True;"*, pois estamos usando o driver de *SQL Server* como banco de dados, então será necessário a instalação do mesmo.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## **Front-end**
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Para rodar o front-end, será necessário clonar esse repositorio [**AlvaroDutra/gerenciamentoPedido_web**](https://github.com/AlvaroDutra/gerenciamentoPedido_web) em qualquer editor de código (usamos o [VSCode](https://code.visualstudio.com)). Assim que clonado, realizar o comando "npm-install" no terminal do projeto para realizar a instalação das dependências. Após o sucesso da instalação, realize o comando "npm run dev" e o servidor *React* estará rodando.  
