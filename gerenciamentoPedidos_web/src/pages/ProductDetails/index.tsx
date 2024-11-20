@@ -25,7 +25,7 @@ export function ProductDetailsPage() {
   const clientData = useQuery({
     queryKey: ["client"],
     queryFn: async () => {
-      const response = await fetch("https://localhost:7106/Client");
+      const response = await fetch("https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Client");
       const client: IClient[] = await response.json();
       return client;
     },
@@ -36,7 +36,7 @@ export function ProductDetailsPage() {
     queryKey: ["product"],
     queryFn: async () => {
       const response = await fetch(
-        `https://localhost:7106/Product/${productName}`
+        `https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Product/${productName}`
       );
       const data: IProduct = await response.json();
       return data;
@@ -48,7 +48,7 @@ export function ProductDetailsPage() {
     queryKey: ["order"],
     queryFn: async () => {
       const response = await fetch(
-        `https://localhost:7106/order/${selectValue}`
+        `https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Order/${selectValue}`
       );
       const orderData: IOrder = await response.json();
       return orderData;
@@ -62,7 +62,7 @@ export function ProductDetailsPage() {
       toast.error("O Cliente não foi selecionado");
       return;
     }
-    const response = await fetch("https://localhost:7106/Order", {
+    const response = await fetch("https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Order", {
       method: "POST",
       body: JSON.stringify({
         id: getOrderRequest.data?.id,

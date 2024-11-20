@@ -31,7 +31,7 @@ const router = createBrowserRouter([
   {
     path: "/pagamento",
     element: <Payment/>,
-    errorElement: <ErrorPage/>
+    //errorElement: <ErrorPage/>
   }
 
 ])

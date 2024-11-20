@@ -11,7 +11,7 @@ export default function ClientsList() {
   const { data } = useQuery({
     queryKey: ["clients"],
     queryFn: async () => {
-      const response = await fetch("https://localhost:7106/Client");
+      const response = await fetch("https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Client");
       const data: IClient[] = await response.json();
       return data;
     },

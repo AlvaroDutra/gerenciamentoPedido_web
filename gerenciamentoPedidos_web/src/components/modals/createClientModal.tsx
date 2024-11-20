@@ -23,7 +23,7 @@ export function CreateClientModal({
   }
 
   async function CreateClient() {
-    const response = await fetch("https://localhost:7106/Client", {
+    const response = await fetch("https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Client", {
       method: "POST",
       body: JSON.stringify({
         name: name,

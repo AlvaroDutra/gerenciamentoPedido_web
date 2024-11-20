@@ -1,6 +1,6 @@
 # **Gerenciador de Pedidos**
 
-Sistema de gerenciamento de pedidos desenvolvido em **C#** e **React** com fim de praticar o desenvolvimento de sistemas para a matéria de Projeto Extencionista e Integrador da UNIVAG.
+Sistema de gerenciamento de pedidos desenvolvido em **C#** e **React** com fim de praticaro desenvolvimento de sistemas para a matéria de Projeto Extencionista e Integrador da UNIVAG.
 
 # **Como usar**
 

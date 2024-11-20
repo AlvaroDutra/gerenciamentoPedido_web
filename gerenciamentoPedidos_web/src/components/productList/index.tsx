@@ -11,7 +11,7 @@ export function ProductList() {
   const { data } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const response = await fetch("https://localhost:7106/Product");
+      const response = await fetch("https://gerenciamentopedidos-api-buekgfe7dgbtb3e6.brazilsouth-01.azurewebsites.net/Product");
       const data: IProduct[] = await response.json();
       return data;
     },
@@ -36,7 +36,7 @@ export function ProductList() {
                 key={i.id}
                 className="rounded px-2 h-14 bg-neutral-50 shadow-shape flex gap-2 items-center w-52 "
               >
-                {i.category.id == 1 ?<CupSoda className="text-cyan-600"/> : <Icon iconNode={burger} className="text-amber-700"/>}
+                {i.category.id == 2 ?<CupSoda className="text-cyan-600"/> : <Icon iconNode={burger} className="text-amber-700"/>}
                 <button
                   onClick={() => {OpenProductDetailsPage(i.name)}}
                   className="font-semibold truncate hover:text-stone-500"

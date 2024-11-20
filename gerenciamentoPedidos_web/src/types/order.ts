@@ -1,7 +1,8 @@
-import {IProduct} from "./product"
+import { IOrderProduct } from "./product";
+
 
 export interface IOrder{
     id: number,
     clientId: string,
-    products: IProduct[]
+    orderProducts: IOrderProduct[]
 }
